@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+  <link href="css/index.css" type="text/css" rel="stylesheet">
+  <title></title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="col1"><img src="img/logo.png" class="logo"><input type="text" class="search" value="总览"></div>
+    <div class="col2">
+      <div class="timer">
+        <span class="weather"><b>14:22</b><img src="img/weather.png"></span>
+        <span class="time">Apr 17 2021 星期一</span>
+      </div>
+    </div>
+    <div class="col3">
+      <div class="btnGroup">
+        <!-- <a href="javascript:;"><img src="img/news.png"></a> -->
+        <a href="javascript:;"><img src="img/setup.png"></a>
+      </div>
+      <ul class="indoor">
+        <li>
+          <img src="img/temperature.png"><span class="indoor_inner">
+            <b>温度</b>
+            <span>30°C温度</span>
+          </span>
+        </li>
+        <li>
+          <img src="img/humidity.png"><span class="indoor_inner">
+            <b>湿度</b>
+            <span>30°C湿度</span>
+          </span>
+        </li>
+        <li>
+          <img src="img/PM2.5.png"><span class="indoor_inner">
+            <b>pm2.5</b>
+            <span>50优</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_left">
+      <div class="navEx">
+        <div class="navItems">
+          <img src="img/nav_1.png"><span class="navItems_inner">
+            <b>综合</b>
+            <span>SYNTHETICAL</span>
+          </span>
+        </div>
+        <div class="navItems">
+          <img src="img/nav_2.png"><span class="navItems_inner">
+            <b>企业</b>
+            <span>SYNTHETICAL</span>
+          </span>
+        </div>
+        <div class="navItems">
+          <img src="img/nav_3.png"><span class="navItems_inner">
+            <b>安防</b>
+            <span>SAFE-PROTECTION</span>
+          </span>
+        </div>
+        <div class="navItems">
+          <img src="img/nav_4.png"><span class="navItems_inner">
+            <b>运营</b>
+            <span>OPERATION</span>
+          </span>
+        </div>
+      </div>
+      <div class="echartsGroup">
+        <div class="echartsGroup_left groupItem">
+          <div class="echarts1" id="echarts1"></div>
+          <div class="echarts2" id="echarts2"></div>
+         <div class="echarts2_item">
+           <span>面积</span>
+           <span class="active">房屋</span>
+         </div>
+          <div class="echarts3" id="echarts3"></div>
+        </div>
+        <div class="echartsGroup_right groupItem">
+          <div class="echarts4" id="echarts4"></div>
+          <div class="echarts5" id="echarts5"></div>
+          <div class="echarts6" id="echarts6"></div>
+        </div>
+      </div>
+    </div>
+    <div class="content_right">
+      <div class="content_right_inner" id="container">
+
+      </div>
+    </div>
+  </div>
+  <script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?type=webgl&v=1.0&ak=fi19NaffRnG5DLdL51MbBMjl72quhXX9"></script>
+  <script src="js/echarts.min.js"></script>
+  <script type="text/javascript" src="js/bmap.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
