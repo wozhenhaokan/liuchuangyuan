@@ -79,7 +79,7 @@ function echarts1() {
 			type: 'pie',
 			radius: ['30%', '100%'],
 			center: ['50%', '50%'],
-			roseType: 'area',
+			roseType: 'radius',
 			top: '20%',
 			labelLine: {
 				lineStyle: {
@@ -108,7 +108,7 @@ function echarts1() {
 			hoverAnimation: false,
 			radius: ['0%', '20%'],
 			center: ['50%', '60%'],
-			roseType: 'area',
+			roseType: 'radius',
 			labelLine: {
 				 show: false,
 			},
@@ -572,7 +572,7 @@ function echarts4() {
 			type: 'pie',
 			radius: ['30%', '100%'],
 			center: ['50%', '50%'],
-			roseType: 'area',
+			roseType: 'radius',
 			top: '20%',
 			labelLine: {
 				lineStyle: {
@@ -612,7 +612,7 @@ function echarts4() {
 			hoverAnimation: false,
 			radius: ['0%', '20%'],
 			center: ['50%', '60%'],
-			roseType: 'area',
+			roseType: 'radius',
 			labelLine: {
 				 show: false,
 			},
