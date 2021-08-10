@@ -1,4 +1,3 @@
-
 //初始化echarts实例
 const chart1 = echarts.init(document.getElementById("echarts1"));
 const chart2 = echarts.init(document.getElementById("echarts2"));
@@ -8,7 +7,7 @@ const chart5 = echarts.init(document.getElementById("echarts5"));
 const chart6 = echarts.init(document.getElementById("echarts6"));
 
 $(function() {
-	
+
 	/********** 执行图表 ****************/
 	echarts1()
 	echarts2()
@@ -17,46 +16,60 @@ $(function() {
 	echarts5()
 	echarts6()
 	var map = new BMapGL.Map('container'); // 创建Map实例
-	map.centerAndZoom(new BMapGL.Point(121.188572,37.571752), 11); // 初始化地图,设置中心点坐标和地图级别
+	map.centerAndZoom(new BMapGL.Point(121.188572, 37.571752), 11); // 初始化地图,设置中心点坐标和地图级别
 	map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
-	
+
 	//业达智谷，long=121.188572,lat=37.571752
-	makePoint(121.188572,37.571752,'业达智谷',map,function(item){
+	makePoint(121.188572, 37.571752, '业达智谷', map, function(item) {
 		console.log(item)
 	})
 	//烟台留学人员创业园区,long=121.003530,lat=37.545299
-	makePoint(121.003530,37.545299,'烟台留学人员创业园区',map,function(item){
+	makePoint(121.003530, 37.545299, '烟台留学人员创业园区', map, function(item) {
 		console.log(item)
 	})
 });
 // 创建地图中的点
-function makePoint (long,lat,str,mapObject,callback) {
+function makePoint(long, lat, str, mapObject, callback) {
 	var point = new BMapGL.Point(long, lat);
-	var marker = new BMapGL.Marker(point);        // 创建标注
+	var marker = new BMapGL.Marker(point); // 创建标注
 	mapObject.addOverlay(marker);
-	var label = new BMapGL.Label(makeBubl(str), {       // 创建文本标注
-	    position: point,                          // 设置标注的地理位置
-	    offset: new BMapGL.Size(-50, -60)           // 设置标注的偏移量
-	})  
-	label.setStyle({                              // 设置label的样式
-	    border: '2px solid #fff'
+	var label = new BMapGL.Label(makeBubl(str), { // 创建文本标注
+		position: point, // 设置标注的地理位置
+		offset: new BMapGL.Size(-50, -60) // 设置标注的偏移量
+	})
+	label.setStyle({ // 设置label的样式
+		border: '2px solid #fff'
 	})
 	mapObject.addOverlay(label)
-	marker.addEventListener("click", function(e){
-		callback(e)   
+	marker.addEventListener("click", function(e) {
+		callback(e)
 	});
 }
 // 创建标注
-function makeBubl (str) {
+function makeBubl(str) {
 	let html = ""
-	html +='<div style="width:150px;text-align:center;padding:0px 10px;white-space: pre-wrap;border:5px solid #171e39; position:relative;background-color:#171e39;color:#fff">'
-	    +'<span style="width:0; height:0; font-size:0; overflow:hidden; position:absolute;border-width:10px; border-style:solid dashed dashed; border-color:#171e39 transparent transparent;left:28px; bottom:-20px;"></span>'
-	    + str
-	+'</div>'
+	html +=
+		'<div style="width:150px;text-align:center;padding:0px 10px;white-space: pre-wrap;border:5px solid #171e39; position:relative;background-color:#171e39;color:#fff">' +
+		'<span style="width:0; height:0; font-size:0; overflow:hidden; position:absolute;border-width:10px; border-style:solid dashed dashed; border-color:#171e39 transparent transparent;left:28px; bottom:-20px;"></span>' +
+		str +
+		'</div>'
 	return html
 }
 
 function echarts1() {
+	var data = [{
+			value: 465,
+			name: '普通人才'
+		},
+		{
+			value: 100,
+			name: '高层次人才'
+		},
+		{
+			value: 30,
+			name: '留学人才'
+		}
+	]
 	let option = {
 		title: {
 			text: '企业人才信息统计',
@@ -73,14 +86,14 @@ function echarts1() {
 		// 	trigger: 'item',
 		// 	formatter: '{a} <br/>{b} : {c} ({d}%)'
 		// },
-		color:['#ffd000','#ffa800','#fd5a00'],
+		color: ['#ffd000', '#ffa800', '#fd5a00'],
 		series: [{
 			name: '面积模式',
 			type: 'pie',
-			radius: ['30%', '100%'],
+			radius: ['20%', '85%'],
 			center: ['50%', '50%'],
-			roseType: 'radius',
 			top: '20%',
+			roseType: 'area',
 			labelLine: {
 				lineStyle: {
 					color: "#dadef8",
@@ -88,37 +101,32 @@ function echarts1() {
 			},
 			label: {
 				color: "#dadef8",
+				formatter: '{b}\n\n{d}%'
 			},
-			data: [{
-					value: 465,
-					name: '普通人才'
-				},
-				{
-					value: 100,
-					name: '高层次人才'
-				},
-				{
-					value: 30,
-					name: '留学人才'
+			data: data.map(item => {
+				return {
+					value: logNum(item.value),
+					name: item.name
 				}
-			]
-		},{
+			})
+		}, {
 			name: '面积模式',
 			type: 'pie',
 			hoverAnimation: false,
 			radius: ['0%', '20%'],
-			center: ['50%', '60%'],
-			roseType: 'radius',
+			center: ['50%', '50%'],
+			top: '20%',
+			roseType: 'area',
 			labelLine: {
-				 show: false,
+				show: false,
 			},
 			itemStyle: {
-				color: '#000' ,
+				color: '#000',
 			},
 			label: {
 				color: "#dadef8",
 				position: 'center',
-				formatter:'{b}\n\n{c}'
+				formatter: '{b}\n\n{c}'
 			},
 			data: [{
 				value: 595,
@@ -128,6 +136,7 @@ function echarts1() {
 	};
 	chart1.setOption(option);
 }
+
 function echarts2() {
 	let color = ["#F8D147", "#F29938", "#EC642B", "#4960D4", "#6E83EE", "#9FABF0", "#BFC9F6", "#E7EBFC"];
 	let chartData = [{
@@ -290,6 +299,7 @@ function echarts2() {
 	};
 	chart2.setOption(option);
 }
+
 function echarts3() {
 	let option = {
 		title: {
@@ -315,7 +325,7 @@ function echarts3() {
 			icon: 'roundRect',
 			itemWidth: 18,
 			itemHeight: 6,
-			data: ['留创园', '海创园', '3W', '北科大','其他'],
+			data: ['留创园', '海创园', '3W', '北科大', '其他'],
 			top: 60,
 			left: 'center',
 			textStyle: {
@@ -329,7 +339,7 @@ function echarts3() {
 			left: 20,
 			right: 20,
 			bottom: 20,
-			  top: 120,
+			top: 120,
 			containLabel: true
 		},
 		xAxis: [{
@@ -343,7 +353,7 @@ function echarts3() {
 			},
 			splitLine: {
 				show: true,
-				interval: 0 ,
+				interval: 0,
 			},
 			axisTick: {
 				show: false
@@ -355,9 +365,9 @@ function echarts3() {
 		}],
 		yAxis: [{
 			type: 'value',
-			name:'单位（个）',
-			nameTextStyle:{
-				color:'#fff'
+			name: '单位（个）',
+			nameTextStyle: {
+				color: '#fff'
 			},
 			axisLabel: {
 				color: '#fff',
@@ -366,7 +376,7 @@ function echarts3() {
 				},
 			},
 			splitLine: {
-			  show: true
+				show: true
 			},
 			axisTick: {
 				show: false
@@ -405,7 +415,7 @@ function echarts3() {
 					color: 'rgb(139,115,242)',
 					borderColor: 'rgba(139,115,242,0.2)',
 					borderWidth: 12
-			
+
 				}
 			},
 			data: [20, 18, 19, 34, 50, 12, 10, 25, 45, 12, 16, 22]
@@ -549,7 +559,32 @@ function echarts3() {
 	};
 	chart3.setOption(option);
 }
+
 function echarts4() {
+	var data = [{
+			value: 103,
+			name: '电子商务'
+		},
+		{
+			value: 78,
+			name: '智能制造'
+		},
+		{
+			value: 62,
+			name: '生物医药'
+		}, {
+			value: 41,
+			name: '新能源'
+		},
+		{
+			value: 26,
+			name: '其他'
+		},
+		{
+			value: 206,
+			name: '电子信息'
+		}
+	]
 	let option = {
 		title: {
 			text: '企业人才信息统计',
@@ -566,14 +601,14 @@ function echarts4() {
 		// 	trigger: 'item',
 		// 	formatter: '{a} <br/>{b} : {c} ({d}%)'
 		// },
-		color:['#ffd000','#ffa800','#fd5a00'],
+		color: ['#ffd000', '#ffa800', '#fd5a00'],
 		series: [{
 			name: '面积模式',
 			type: 'pie',
-			radius: ['30%', '100%'],
+			radius: ['20%', '85%'],
 			center: ['50%', '50%'],
-			roseType: 'radius',
 			top: '20%',
+			roseType: 'area',
 			labelLine: {
 				lineStyle: {
 					color: "#dadef8",
@@ -581,48 +616,32 @@ function echarts4() {
 			},
 			label: {
 				color: "#dadef8",
+				formatter: '{b}\n\n{d}%'
 			},
-			data: [{
-					value: 103,
-					name: '电子商务'
-				},
-				{
-					value: 78,
-					name: '智能制造'
-				},
-				{
-					value: 62,
-					name: '生物医药'
-				},{
-					value: 41,
-					name: '新能源'
-				},
-				{
-					value: 26,
-					name: '其他'
-				},
-				{
-					value: 206,
-					name: '电子信息'
+			data: data.map(item => {
+				return {
+					value: logNum(item.value),
+					name: item.name
 				}
-			]
-		},{
+			})
+		}, {
 			name: '面积模式',
 			type: 'pie',
 			hoverAnimation: false,
 			radius: ['0%', '20%'],
-			center: ['50%', '60%'],
-			roseType: 'radius',
+			center: ['50%', '50%'],
+			top: '20%',
+			roseType: 'area',
 			labelLine: {
-				 show: false,
+				show: false,
 			},
 			itemStyle: {
-				color: '#000' ,
+				color: '#000',
 			},
 			label: {
 				color: "#dadef8",
 				position: 'center',
-				formatter:'{b}\n\n{c}'
+				formatter: '{b}\n\n{c}'
 			},
 			data: [{
 				value: 515,
@@ -640,7 +659,7 @@ function echarts5() {
 			left: 20,
 			right: 20,
 			bottom: 0,
-			  top: 10,
+			top: 10,
 			containLabel: true
 		},
 		title: {
@@ -747,8 +766,8 @@ function echarts5() {
 				},
 				itemStyle: {
 					color: '#5663b0',
-					borderColor:'#5663b0',
-					borderWidth:1
+					borderColor: '#5663b0',
+					borderWidth: 1
 				},
 				data: [{
 					value: 538,
@@ -766,8 +785,8 @@ function echarts5() {
 				stack: '车位使用情况统计',
 				itemStyle: {
 					color: '#0f1116',
-					borderColor:'#5663b0',
-					borderWidth:1
+					borderColor: '#5663b0',
+					borderWidth: 1
 				},
 				data: [{
 					value: 252,
@@ -822,7 +841,7 @@ function echarts6() {
 			left: 20,
 			right: 20,
 			bottom: 20,
-			  top: 120,
+			top: 120,
 			containLabel: true
 		},
 		xAxis: [{
@@ -836,7 +855,7 @@ function echarts6() {
 			},
 			splitLine: {
 				show: true,
-				interval: 0 ,
+				interval: 0,
 			},
 			axisTick: {
 				show: false
@@ -848,9 +867,9 @@ function echarts6() {
 		}],
 		yAxis: [{
 			type: 'value',
-			name:'单位（万元）',
-			nameTextStyle:{
-				color:'#fff'
+			name: '单位（万元）',
+			nameTextStyle: {
+				color: '#fff'
 			},
 			axisLabel: {
 				color: '#fff',
@@ -859,7 +878,7 @@ function echarts6() {
 				},
 			},
 			splitLine: {
-			  show: true
+				show: true
 			},
 			axisTick: {
 				show: false
@@ -898,7 +917,7 @@ function echarts6() {
 					color: 'rgb(255,90,0)',
 					borderColor: 'rgba(255,90,0,0.2)',
 					borderWidth: 12
-	
+
 				}
 			},
 			data: [10, 50, 25, 45, 12, 5, 12, 22, 12, 19, 34, 50]
@@ -929,7 +948,7 @@ function echarts6() {
 			},
 			itemStyle: {
 				normal: {
-	
+
 					color: 'rgb(255,208,0)',
 					borderColor: 'rgba(255,208,0,0.2)',
 					borderWidth: 12
@@ -963,7 +982,7 @@ function echarts6() {
 			},
 			itemStyle: {
 				normal: {
-	
+
 					color: 'rgb(0,150,255)',
 					borderColor: 'rgba(0,150,255,0.2)',
 					borderWidth: 12
@@ -973,4 +992,9 @@ function echarts6() {
 		}]
 	};
 	chart6.setOption(option);
+}
+
+// 解决差值过大问题
+function logNum(num) {
+	return (Math.log(num) + 1)
 }

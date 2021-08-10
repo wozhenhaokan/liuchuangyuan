@@ -33,6 +33,18 @@ $(function() {
 });
 
 function echarts1() {
+	var data = [{
+			value: 181,
+			name: '软件著作权'
+		},
+		{
+			value: 220,
+			name: '专利技术'
+		},
+		{
+			value: 210,
+			name: '商标权'
+		}]
 	let option = {
 		title: {
 			text: '知识产权统计',
@@ -53,10 +65,10 @@ function echarts1() {
 		series: [{
 			name: '面积模式',
 			type: 'pie',
-			radius: ['30%', '100%'],
+			radius: ['20%', '85%'],
 			center: ['50%', '50%'],
-			roseType: 'radius',
-			top: '20%',
+			top:'10%',
+			roseType: 'area',
 			labelLine: {
 				show: false,
 			},
@@ -64,28 +76,22 @@ function echarts1() {
 				color: "#000",
 				position: 'inside',
 				fontSize: 14,
-				formatter: '{b}\n{c}'
+				formatter: '{b}\n\n{d}%'
 			},
-			data: [{
-					value: 181,
-					name: '软件著作权'
-				},
-				{
-					value: 220,
-					name: '专利技术'
-				},
-				{
-					value: 210,
-					name: '商标权'
+			data: data.map(item => {
+				return {
+					value: logNum(item.value),
+					name: item.name
 				}
-			]
+			})
 		}, {
 			name: '面积模式',
 			type: 'pie',
 			hoverAnimation: false,
-			radius: ['0%', '24%'],
-			center: ['50%', '60%'],
-			roseType: 'radius',
+			radius: ['0%', '20%'],
+			center: ['50%', '50%'],
+			top:'10%',
+			roseType: 'area',
 			labelLine: {
 				show: false,
 			},
@@ -108,6 +114,21 @@ function echarts1() {
 }
 
 function echarts2() {
+	var data = [{
+			value: 173,
+			name: '1年'
+		},
+		{
+			value: 200,
+			name: '2年'
+		},
+		{
+			value: 110,
+			name: '3年'
+		}, {
+			value: 32,
+			name: '4年'
+		}]
 	let option = {
 		title: {
 			text: '企业在园时间',
@@ -128,10 +149,10 @@ function echarts2() {
 		series: [{
 			name: '面积模式',
 			type: 'pie',
-			radius: ['30%', '100%'],
+			radius: ['20%', '85%'],
 			center: ['50%', '50%'],
-			roseType: 'radius',
-			top: '20%',
+			top:'10%',
+			roseType: 'area',
 			labelLine: {
 				show: false,
 			},
@@ -139,31 +160,22 @@ function echarts2() {
 				color: "#000",
 				position: 'inside',
 				fontSize: 14,
-				formatter: '{b}\n{c}'
+				formatter: '{b}\n\n{d}%'
 			},
-			data: [{
-					value: 173,
-					name: '1年'
-				},
-				{
-					value: 200,
-					name: '2年'
-				},
-				{
-					value: 110,
-					name: '3年'
-				}, {
-					value: 32,
-					name: '4年'
+			data: data.map(item => {
+				return {
+					value: logNum(item.value),
+					name: item.name
 				}
-			]
+			})
 		}, {
 			name: '面积模式',
 			type: 'pie',
 			hoverAnimation: false,
-			radius: ['0%', '24%'],
-			center: ['50%', '60%'],
-			roseType: 'radius',
+			radius: ['0%', '20%'],
+			center: ['50%', '50%'],
+			top:'10%',
+			roseType: 'area',
 			labelLine: {
 				show: false,
 			},
@@ -426,7 +438,7 @@ function echarts5() {
 			splitLine: {
 				show: false,
 			},
-			max:508
+			max: 508
 		}],
 		yAxis: [{
 				//type: 'category',
@@ -594,7 +606,7 @@ function echarts6() {
 			splitLine: {
 				show: false,
 			},
-			max:829
+			max: 829
 		}],
 		yAxis: [{
 				//type: 'category',
@@ -730,4 +742,9 @@ function echarts6() {
 		]
 	};
 	chart6.setOption(option);
+}
+
+// 解决差值过大问题
+function logNum(num) {
+	return (Math.log(num) + 1)
 }
