@@ -30,6 +30,10 @@ $(function() {
 	echarts4()
 	echarts5()
 	echarts6()
+	//导航菜单切换
+	$('.navItems').click(function(){
+		$(this).addClass('active').siblings().removeClass('active')
+	})
 });
 
 function echarts1() {

@@ -14,7 +14,9 @@ $(function () {
       "create": { name: "新增标签" }
     }
   });
-
-
+	//导航菜单切换
+	$('.navItems').click(function(){
+		$(this).addClass('active').siblings().removeClass('active')
+	})
 });
 

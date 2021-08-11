@@ -7,10 +7,9 @@ const chart5 = echarts.init(document.getElementById("echarts5"));
 const chart6 = echarts.init(document.getElementById("echarts6"));
 
 $(function() {
-
 	/********** 执行图表 ****************/
 	echarts1()
-	echarts2()
+	echarts2('平米')
 	echarts3()
 	echarts4()
 	echarts5()
@@ -26,6 +25,19 @@ $(function() {
 	//烟台留学人员创业园区,long=121.003530,lat=37.545299
 	makePoint(121.003530, 37.545299, '烟台留学人员创业园区', map, function(item) {
 		console.log(item)
+	})
+	//导航菜单切换
+	$('.navItems').click(function(){
+		$(this).addClass('active').siblings().removeClass('active')
+	})
+	//房屋租赁统计  房屋面积切换
+	$('.echarts2_item span').click(function(){
+		$(this).addClass('active').siblings().removeClass('active')
+		if($(this).text() == '房屋'){
+			echarts2('间')
+		}else{
+			echarts2('平米')
+		}
 	})
 });
 // 创建地图中的点
@@ -44,6 +56,8 @@ function makePoint(long, lat, str, mapObject, callback) {
 	marker.addEventListener("click", function(e) {
 		callback(e)
 	});
+	
+	
 }
 // 创建标注
 function makeBubl(str) {
@@ -137,7 +151,7 @@ function echarts1() {
 	chart1.setOption(option);
 }
 
-function echarts2() {
+function echarts2(type) {
 	let color = ["#F8D147", "#F29938", "#EC642B", "#4960D4", "#6E83EE", "#9FABF0", "#BFC9F6", "#E7EBFC"];
 	let chartData = [{
 			name: 'CBD',
@@ -263,8 +277,7 @@ function echarts2() {
 			axisLabel: {
 				formatter: function(params) {
 					let item = chartData[params];
-					console.log(item)
-					return '{circle|━}{name|' + item.name + ':' + '已租' + item.value + '间,剩余' + item.surplus + '间' + '}'
+					return '{circle|━}{name|' + item.name + ':' + '已租' + item.value + type+',剩余' + item.surplus + type + '}'
 				},
 				interval: 0,
 				inside: true,
@@ -297,7 +310,7 @@ function echarts2() {
 		}],
 		series: pieSeries
 	};
-	chart2.setOption(option);
+	chart2.setOption(option,true);
 }
 
 function echarts3() {
@@ -651,7 +664,6 @@ function echarts4() {
 	};
 	chart4.setOption(option);
 }
-
 
 function echarts5() {
 	let option = {

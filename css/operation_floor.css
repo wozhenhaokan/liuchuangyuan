@@ -186,6 +186,9 @@ html{
   margin-right: 10px;
 	cursor: pointer;
 }
+.navItems.active{
+	background-color: #2a3e8a;
+}
 .navItems:last-child{
   margin-right: 0px;
 }
