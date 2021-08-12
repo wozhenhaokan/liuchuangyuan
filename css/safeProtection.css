@@ -18,6 +18,7 @@ html{
   width: 43%;
   height: 76px;
   float: left;
+	position: relative;
 }
 .col2{
   width: 20%;
@@ -301,7 +302,29 @@ margin-left: 123px;
   padding: 90px 30px;
 }
 
-
+.table{
+	color: #fff;
+}
+.table caption{
+	font-size: 24px;
+	text-align: center;
+	color: #fff;
+}
+.table>thead>tr{
+	background-color: rgba(49,58,92,0.5)
+}
+.table>thead>tr>th,.table>tbody>tr>td{
+	text-align: center;
+}
+.table .finish{
+	olor: #2eaa03;
+}
+.table .unfinish{
+	color: #ff0000;
+}
+.table .running{
+	color: #fcff00;
+}
 .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
 	border: 0.03125rem solid #2c385d;
 }
@@ -348,32 +371,81 @@ margin-left: 123px;
 }
 .right_nner_bottom{
   width: 100%;
-  height: 840px;
+  /* height: 940px; */
+	padding:50px 0;
   background: linear-gradient(180deg,#1a2d87, #3247b0 100%);
   overflow: hidden;
   position: relative;
 }
 .right_nner_bottom > img{
-  width: 100%;
-  height: 100%;
-  object-fit: scale-down;
+		height: 100%;
+		box-sizing: border-box;
+		margin-top: 20px;
 }
 .selectGroup{
-  position: absolute;
-  right: 20px;
-  top: 20px;
+  padding: 0 70px;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
-.selectItem{
-  width: 150px;
-  height: 32px;
+.selectGroup p{
+	color: #fff;
+	font-size: 24px
+}
+.selectGroup img{
+	object-fit: none;
+}
+.nav_selectItem{
+	text-align: center;
+  width: 250px;
+  height: 34px;
+	border-radius: 20px;
   background: #fff;
-  border: 1px solid rgba(120,143,255,0.77);
-  border-radius: 3px;
-  padding: 6px 10px;
+  border: none;
+  padding: 6px 0;
   outline: none;
-  color: #000;
+  color: #fff;
+	background-color: #283258;
+	margin-top: 24px;
+	margin-left: 44px;
   float: left;
+	position: relative;
 }
-.selectItem:last-child{
-  margin-left: 10px;
+.select_option{
+	display: none;
+	position: absolute;
+	top: 34px;
+	width: 100%;
+	left: 0;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	background-color: #2a3e8a;
+	padding-bottom: 10px;
+}
+.select_option li{
+	list-style-type: none;
+	cursor: pointer;
+	padding-top: 10px;
+}
+.nav_selectItem_icon{
+	position: absolute;
+	height: 34px;
+	width: 40px;
+	border-radius: 0 20px 20px 0;
+	background-color: #2a3e8a;
+	top: 0px;
+	right: 0px;
+	z-index: 100;
+	text-align: center;
+	line-height: 34px;
+}
+.nav_selectItem_icon span{
+	width: 0;
+	height: 0;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 8px solid #fff;
+	z-index: 101;
+	display: inline-block;
 }

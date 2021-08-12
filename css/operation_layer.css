@@ -243,7 +243,19 @@ html{
 	
 }
 
-
+.table{
+	color: #fff;
+}
+.table>thead>tr{
+	background-color: #4f61a7;color: #fff;
+}
+.table>tbody>tr:nth-child(odd){
+	background-color: #fff;
+}
+.table>tbody>tr:nth-child(even){
+	background-color: #fff;
+	background-color: #828aa6;color: #fff;
+}
 .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
 	border: none;
 }
@@ -337,8 +349,8 @@ html{
 }
 .selectGroup{
   position: absolute;
-  right: 20px;
-  top: 20px;
+ right: 40px;
+ top: 40px;
 }
 .selectItem{
   width: 150px;
@@ -353,4 +365,20 @@ html{
 }
 .selectItem:last-child{
   margin-left: 10px;
+}
+.nav_selectItem{
+	text-align: center;
+  width: 250px;
+  height: 34px;
+	border-radius: 20px;
+  background: #fff;
+  border: none;
+  padding: 6px 0;
+	padding-left: 50px;
+  outline: none;
+  color: #fff;
+	background-color: #283258;
+	margin-top: 24px;
+	margin-left: 44px;
+  /* float: left; */
 }

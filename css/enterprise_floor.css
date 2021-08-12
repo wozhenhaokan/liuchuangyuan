@@ -316,14 +316,14 @@ html{
   position: relative;
 }
 .right_nner_bottom > img{
-  width: 100%;
-  height: 100%;
-	object-fit: scale-down;
+		width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .selectGroup{
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 40px;
+  top: 40px;
 }
 .selectItem{
   width: 150px;
@@ -356,4 +356,20 @@ html{
   outline: none;
   color: #000;
   float: left;
+}
+.nav_selectItem{
+	text-align: center;
+  width: 250px;
+  height: 34px;
+	border-radius: 20px;
+  background: #fff;
+  border: none;
+  padding: 6px 0;
+	padding-left: 50px;
+  outline: none;
+  color: #fff;
+	background-color: #283258;
+	margin-top: 24px;
+	margin-left: 44px;
+  /* float: left; */
 }
