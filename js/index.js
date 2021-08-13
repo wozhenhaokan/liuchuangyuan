@@ -56,8 +56,6 @@ function makePoint(long, lat, str, mapObject, callback) {
 	marker.addEventListener("click", function(e) {
 		callback(e)
 	});
-	
-	
 }
 // 创建标注
 function makeBubl(str) {

@@ -34,6 +34,13 @@ $(function() {
 	$('.navItems').click(function(){
 		$(this).addClass('active').siblings().removeClass('active')
 	})
+	//点击select
+	$('.nav_selectItem').click(function () {
+		$('.select_option').slideToggle()
+	})
+	$('.select_option li').click(function () {
+		$('.nav_selectItem_value').text($(this).text())
+	})
 });
 
 function echarts1() {

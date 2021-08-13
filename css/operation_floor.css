@@ -348,13 +348,50 @@ html{
   height: 34px;
 	border-radius: 20px;
   background: #fff;
-  border: none;
   padding: 6px 0;
-	padding-left: 50px;
   outline: none;
   color: #fff;
 	background-color: #283258;
 	margin-top: 24px;
 	margin-left: 44px;
-  /* float: left; */
+  float: left;
+	position: relative;
+}
+.select_option{
+	display: none;
+	position: absolute;
+	top: 34px;
+	width: 100%;
+	left: 0;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	background-color: #2a3e8a;
+	padding-bottom: 10px;
+}
+.select_option li{
+	list-style-type: none;
+	cursor: pointer;
+	padding-top: 10px;
+}
+.nav_selectItem_icon{
+	position: absolute;
+	height: 34px;
+	width: 40px;
+	border-radius: 0 20px 20px 0;
+	background-color: #2a3e8a;
+	top: 0px;
+	right: 0px;
+	z-index: 100;
+	text-align: center;
+	line-height: 34px;
+}
+.nav_selectItem_icon span{
+	width: 0;
+	height: 0;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 8px solid #fff;
+	z-index: 101;
+	display: inline-block;
 }
