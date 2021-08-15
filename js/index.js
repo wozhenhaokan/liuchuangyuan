@@ -15,7 +15,7 @@ $(function() {
 	echarts5()
 	echarts6()
 	var map = new BMapGL.Map('container'); // 创建Map实例
-	map.centerAndZoom(new BMapGL.Point(121.188572, 37.571752), 11); // 初始化地图,设置中心点坐标和地图级别
+	map.centerAndZoom(new BMapGL.Point(121.188572, 37.571752), 12); // 初始化地图,设置中心点坐标和地图级别
 	map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
 
 	//业达智谷，long=121.188572,lat=37.571752
@@ -43,14 +43,16 @@ $(function() {
 // 创建地图中的点
 function makePoint(long, lat, str, mapObject, callback) {
 	var point = new BMapGL.Point(long, lat);
-	var marker = new BMapGL.Marker(point); // 创建标注
+	var myIcon = new BMapGL.Icon("/liuchuangyuan/img/slice5.png", new BMapGL.Size(30, 30), {});    
+	var marker = new BMapGL.Marker(point,{icon:myIcon}); // 创建标注
 	mapObject.addOverlay(marker);
 	var label = new BMapGL.Label(makeBubl(str), { // 创建文本标注
 		position: point, // 设置标注的地理位置
-		offset: new BMapGL.Size(-50, -60) // 设置标注的偏移量
+		offset: new BMapGL.Size(-10, -66) // 设置标注的偏移量
 	})
 	label.setStyle({ // 设置label的样式
-		border: '2px solid #fff'
+		border: 'none',
+		padding:0
 	})
 	mapObject.addOverlay(label)
 	marker.addEventListener("click", function(e) {
@@ -59,12 +61,7 @@ function makePoint(long, lat, str, mapObject, callback) {
 }
 // 创建标注
 function makeBubl(str) {
-	let html = ""
-	html +=
-		'<div style="width:150px;text-align:center;padding:0px 10px;white-space: pre-wrap;border:5px solid #171e39; position:relative;background-color:#171e39;color:#fff">' +
-		'<span style="width:0; height:0; font-size:0; overflow:hidden; position:absolute;border-width:10px; border-style:solid dashed dashed; border-color:#171e39 transparent transparent;left:28px; bottom:-20px;"></span>' +
-		str +
-		'</div>'
+	let html = '<div class="bubble">'+str+'</div>'
 	return html
 }
 

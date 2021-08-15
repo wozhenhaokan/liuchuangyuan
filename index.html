@@ -10,7 +10,20 @@
 
 <body>
   <div class="header">
-    <div class="col1"><img src="img/logo.png" class="logo"></div>
+    <div class="col1">
+		<img src="img/logo.png" class="logo">
+		<ul class="nav_selectItem">
+			<span class="nav_selectItem_value">业达智谷</span>
+			<div class="nav_selectItem_icon">
+				<span></span>
+			</div>
+			<div class="select_option">
+				<li>业达智谷1</li>
+				<li>业达智谷2</li>
+				<li>业达智谷3</li>
+			</div>
+		</ul>
+	</div>
     <div class="col2">
       <div class="timer">
         <span class="weather"><b>14:22</b><img src="img/weather.png"></span>
@@ -77,8 +90,8 @@
           <div class="echarts1" id="echarts1"></div>
           <div class="echarts2" id="echarts2"></div>
          <div class="echarts2_item">
-           <span>面积</span>
-           <span class="active">房屋</span>
+           <span class="active">面积</span>
+           <span>房屋</span>
          </div>
           <div class="echarts3" id="echarts3"></div>
         </div>
@@ -95,8 +108,8 @@
       </div>
     </div>
   </div>
-  <script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/jquery.min.js"></script>
+  <script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="http://api.map.baidu.com/api?type=webgl&v=1.0&ak=fi19NaffRnG5DLdL51MbBMjl72quhXX9"></script>
   <script src="js/echarts.min.js"></script>

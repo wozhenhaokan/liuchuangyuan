@@ -24,26 +24,107 @@ $(function() {
 		}
 	});
 	/********** 执行图表 ****************/
-	echarts1()
-	echarts2()
-	echarts3()
-	echarts4()
-	echarts5()
-	echarts6()
+	echarts1('月')
+	echarts2('月')
+	echarts3('月')
+	echarts4('月')
+	echarts5('月')
+	echarts6('月')
+	
 	//导航菜单切换
-	$('.navItems').click(function(){
+	$('.navItems').click(function() {
 		$(this).addClass('active').siblings().removeClass('active')
 	})
-	//点击select
-	$('.nav_selectItem').click(function () {
+	//点击顶部select
+	$('.nav_selectItem').click(function() {
 		$('.select_option').slideToggle()
 	})
-	$('.select_option li').click(function () {
+	$('.select_option li').click(function() {
 		$('.nav_selectItem_value').text($(this).text())
 	})
+	
+	// echarts切换年月
+	$('.navList span').click(function() {
+		$(this).addClass('active').siblings().removeClass('active')
+		var echartsId = $(this).parent('.navList').siblings('.echarts')[0].id
+		console.log(echartsId)
+		// 更新echarts视图
+		switch (echartsId) {
+			case 'echarts1':
+				echarts1($(this).text())
+				if($(this).text() == '年'){
+					$('#yearItem_echarts1').hide()
+				}else{
+					$('#yearItem_echarts1').show()
+				}
+				break;
+			case 'echarts2':
+				echarts2($(this).text())
+				if($(this).text() == '年'){
+					$('#yearItem_echarts2').hide()
+				}else{
+					$('#yearItem_echarts2').show()
+				}
+				break;
+			case 'echarts3':
+				echarts3($(this).text())
+				if($(this).text() == '年'){
+					$('#yearItem_echarts3').hide()
+				}else{
+					$('#yearItem_echarts3').show()
+				}
+				break;
+			case 'echarts4':
+				echarts4($(this).text())
+				if($(this).text() == '年'){
+					$('#yearItem_echarts4').hide()
+				}else{
+					$('#yearItem_echarts4').show()
+				}
+				break;
+			case 'echarts5':
+				echarts5($(this).text())
+				if($(this).text() == '年'){
+					$('#yearItem_echarts5').hide()
+				}else{
+					$('#yearItem_echarts5').show()
+				}
+				break;
+			case 'echarts6':
+				echarts6($(this).text())
+				if($(this).text() == '年'){
+					$('#yearItem_echarts6').hide()
+				}else{
+					$('#yearItem_echarts6').show()
+				}
+				break;
+
+		}
+	})
+	// echarts切换显示的年份
+	$('#yearItem_echarts1').change(function () {
+		console.log($("#yearItem_echarts1 option:selected").text())
+		echarts1('月',$("#yearItem_echarts1 option:selected").text())
+	})
+	
 });
 
-function echarts1() {
+function echarts1(dateType,year) { // dateType选择的年或月   year  当dateType是月时，选择的年份，可以自定一个默认值
+	year = year || '2021年'
+	// 可以在这边获取数据
+	var data = [{dates:[],values:[]}]
+	if(dateType == '年'){
+		data.dates = ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"]
+		data.values = [601, 590, 639, 800, 601, 590, 639, 800, 536, 754, 826, 655]
+	}else{
+		// 使用year参数获取某年的数据
+		data.dates = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+		if(year == '2021年'){
+			data.values = [401, 390, 439, 500, 401, 390, 239, 400, 336, 454, 326, 555]
+		}else if(year == '2022年'){
+			data.values = [601, 590, 639, 800, 601, 590, 639, 800, 536, 754, 826, 655]
+		}
+	}
 	let option = {
 		color: ["#25379c", "#f88832"],
 		backgroundColor: '#c8cffa',
@@ -85,7 +166,8 @@ function echarts1() {
 					color: '#acb2d6'
 				}
 			},
-			data: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"]
+			// data: ["2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"]
+			data:data.dates
 		}],
 		yAxis: [{
 			type: 'value',
@@ -115,7 +197,8 @@ function echarts1() {
 			name: '启动资金补贴',
 			type: 'bar',
 			barWidth: 14,
-			data: [601, 590, 639, 800, 601, 590, 639, 800, 536, 754, 826, 655],
+			// data: [601, 590, 639, 800, 601, 590, 639, 800, 536, 754, 826, 655],
+			data: data.values,
 			// label: {
 			// 	normal: {
 			// 		show: true,
@@ -386,7 +469,7 @@ function echarts4() {
 			// 		// offset: [4, -25]
 			// 	}
 			// },
-		},{
+		}, {
 			name: '入园企业',
 			type: 'bar',
 			barWidth: 7,
@@ -487,7 +570,7 @@ function echarts5() {
 			// 		// offset: [4, -25]
 			// 	}
 			// },
-		},{
+		}, {
 			name: '利润',
 			type: 'bar',
 			barWidth: 7,
@@ -588,7 +671,7 @@ function echarts6() {
 			// 		// offset: [4, -25]
 			// 	}
 			// },
-		},{
+		}, {
 			name: '负债',
 			type: 'bar',
 			barWidth: 7,

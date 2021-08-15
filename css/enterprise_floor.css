@@ -161,11 +161,12 @@ html{
   float: left;
 }
 .content_right{
-  
+  margin-top: 14px;
   width: 840px;
-  /* border-left: 10px solid #0f1116; */
+   background: rgba(38,55,151,0.3);
   float: left;
-  height: 960px;
+  height: 1168px;
+  border-radius: 10px;
 }
 .content_right_inner{
   width: 100%;
@@ -310,15 +311,13 @@ html{
 }
 .right_nner_bottom{
   width: 100%;
-  height: 840px;
-  background: linear-gradient(180deg,#1a2d87, #3247b0 100%);
-  overflow: hidden;
+  height: 1168px;
   position: relative;
 }
 .right_nner_bottom > img{
-		width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+	object-fit: fill;
 }
 .selectGroup{
   position: absolute;
@@ -339,6 +338,7 @@ html{
 .selectItem:last-child{
   margin-left: 10px;
 }
+
 
 .selectYear{
   position: absolute;

@@ -161,11 +161,12 @@ html{
   float: left;
 }
 .content_right{
-  
-  width: 840px;
-  /* border-left: 10px solid #0f1116; */
-  float: left;
-  height: 960px;
+  margin-top: 14px;
+      width: 840px;
+      border-radius: 10px;
+      float: left;
+      height: 1130px;
+      background: rgba(38,55,151,0.3);
 }
 .content_right_inner{
   width: 100%;
@@ -295,22 +296,22 @@ html{
 }
 .right_nner_bottom{
   width: 100%;
-  height: 840px;
-  background: linear-gradient(180deg,#1a2d87, #3247b0 100%);
-  overflow: hidden;
-  position: relative;
+      height: 1130px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
 }
 .right_nner_bottom > img{
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: fill;
 }
 .selectGroup{
   position: absolute;
  right: 40px;
  top: 40px;
 }
-.selectItem{
+/* .selectItem{
   width: 150px;
   height: 32px;
   background: #091975;
@@ -320,11 +321,21 @@ html{
   outline: none;
   color: #fff;
   float: left;
-}
+} */
 .selectItem:last-child{
   margin-left: 10px;
 }
-
+.right_nner_bottom .selectItem{
+	width: 168px;
+  height: 32px;
+  background: #fff;
+  border: 1px solid rgba(120,143,255,0.77);
+  border-radius: 3px;
+  padding: 6px 10px;
+  outline: none;
+  color: #000;
+  float: left;
+}
 .selectYear{
   position: absolute;
   right: 30px;
